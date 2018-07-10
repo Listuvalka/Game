@@ -9,7 +9,7 @@
 class Hit: public Spell {
 
 public:
-    Hit(SpellCaster* owner, enSp* spellName, int actionPoint, int cost);
+    Hit(SpellCaster* owner, enSp spellName, int actionPoint, int cost);
     virtual ~Hit();
     
     virtual void action(Unit *target);

@@ -27,7 +27,7 @@ public:
 	SpellCaster(const char* name, int hitPoint, int damage, int mana, const char* type);
 	virtual ~SpellCaster();
     
-    enSp* getSpellName() const;
+    enSp getSpellName() const;
 
 	int getMana() const;
 	int getManaLim() const;

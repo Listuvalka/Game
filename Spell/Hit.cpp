@@ -1,6 +1,6 @@
 #include "Hit.h"
 
-Hit::Hit(SpellCaster* owner, enSp* spellName, int actionPoint, int cost): Spell(owner, spellName, actionPoint, cost) {}
+Hit::Hit(SpellCaster* owner, enSp spellName, int actionPoint, int cost): Spell(owner, spellName, actionPoint, cost) {}
 Hit::~Hit() {}
 
 void Hit::action(Unit *target) {

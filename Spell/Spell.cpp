@@ -1,6 +1,6 @@
 #include "Spell.h"
 
-Spell::Spell(SpellCaster* owner, enSp* spellName, int actionPoint, int cost): owner(owner) {
+Spell::Spell(SpellCaster* owner, enSp spellName, int actionPoint, int cost): owner(owner) {
     this->spellName = spellName;
     this->actionPoint = actionPoint;
     this->cost = cost;
@@ -15,6 +15,6 @@ int Spell::getCost() const {
 	return this->cost;
 }
 
-enSp* Spell::getSpellName() const {
+enSp Spell::getSpellName() const {
     return this->spellName;
 }

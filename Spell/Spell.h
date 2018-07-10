@@ -13,14 +13,14 @@ protected:
     SpellCaster* owner;
 	int actionPoint;
 	int cost;
-    enSp* spellName;
+    enSp spellName;
 public:
-	Spell(SpellCaster* owner, enSp* spellName, int actionPoint, int cost);
+	Spell(SpellCaster* owner, enSp spellName, int actionPoint, int cost);
 	virtual ~Spell();
 
 	int getActionPoint() const;
 	int getCost() const;
-    enSp* getSpellName() const;
+    enSp getSpellName() const;
     
 	virtual void action(Unit *target) = 0;
 };

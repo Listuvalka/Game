@@ -14,7 +14,7 @@ SpellCaster:: ~SpellCaster() {
     delete(this->spell);
 }
 
-enSp* SpellCaster::getSpellName() const {
+enSp SpellCaster::getSpellName() const {
     return this->spell->getSpellName();
 }
 
