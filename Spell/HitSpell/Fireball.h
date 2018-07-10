@@ -2,14 +2,14 @@
 #define FIREBALL_H
 
 #include <iostream>
-// #include "../../Spell/Spell.h"123
+// #include "../../Spell/Spell.h"
 #include "../../Spell/Hit.h"
 
 
 
 class Fireball: public Hit {
 public:
-    Fireball();
+    Fireball(SpellCaster* owner);
     virtual ~Fireball();
 };
 
