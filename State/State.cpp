@@ -1,16 +1,17 @@
 #include "State.h"
 
-State::State(const char* name, int hitPoint, int damage) {
-    this->name = name;
+State::State(int hitPoint, int damage) {
     this->hitPoint = hitPoint;
     this->hitPointLimit = hitPoint;
     this->damage = damage;
 }
 State:: ~State() {}
 
+
+
 void State::ensureIsAlive() {
-    if (hitPoint == 0 ) {
-         throw OutOfHPException();
+    if ( this->hitPoint == 0 ) {
+        throw OutOfHPException();
     }
 }
 int State::getDamage() const {
@@ -21,9 +22,6 @@ int State::getHitPoint() const {
 }
 int State::getHitPointLimit() const {
     return this->hitPointLimit;
-}
-const char* State::getName() const {
-    return this->name;
 }
 
 void State::addHitPoint(int hp) {

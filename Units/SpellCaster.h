@@ -24,7 +24,7 @@ protected:
     enSp key;
 	MagState* magState;
 public:
-	SpellCaster(const char* name, int hitPoint, int damage, int mana, const char* type);
+	SpellCaster(enName name, int hitPoint, int damage, int mana, const char* type);
 	virtual ~SpellCaster();
     
     enSp getSpellName() const;

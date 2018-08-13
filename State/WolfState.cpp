@@ -1,7 +1,7 @@
 #include "WolfState.h"
 
 
-WolfState::WolfState(): State("Wolf", 150, 35) {}
+WolfState::WolfState(): State(150, 35) {}
 WolfState::~WolfState() {}
 
 void WolfState::takeDamage(int dmg) {

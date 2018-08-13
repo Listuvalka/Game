@@ -9,7 +9,7 @@ TEST_CASE( "Test of Werewolf class" ) {
     Werewolf* werewolf = new Werewolf();
     REQUIRE( werewolf->getHitPoint() == hp );
     REQUIRE( werewolf->getHitPointLimit() == hp );
-    REQUIRE( werewolf->getName() == "Werewolf" );
+    REQUIRE( werewolf->getName() == 5 );
     REQUIRE( werewolf->getDamage() == 30 );
     
     SECTION( "Werewolf::takeDemage test" ) {
@@ -73,7 +73,7 @@ TEST_CASE( "Test of Werewolf class" ) {
 
     	REQUIRE( enemy->getHitPoint() == 100 );
     	REQUIRE( enemy->getHitPointLimit() == 100 );
-    	REQUIRE( enemy->getName() == "Soldier" );
+    	REQUIRE( enemy->getName() == 1 );
     	REQUIRE( enemy->getDamage() == damage );
 
     	werewolf->attack(enemy);
@@ -95,26 +95,26 @@ TEST_CASE( "Test of Werewolf class" ) {
 
         REQUIRE( enemy->getHitPoint() == 100 );
         REQUIRE( enemy->getHitPointLimit() == 100 );
-        REQUIRE( enemy->getName() == "Soldier" );
+        REQUIRE( enemy->getName() == 1 );
         REQUIRE( enemy->getDamage() == damage );
 
         REQUIRE( vampire->getHitPoint() == 150 );
         REQUIRE( vampire->getHitPointLimit() == 150 );
-        REQUIRE( vampire->getName() == "Vampire" );
+        REQUIRE( vampire->getName() == 4 );
         REQUIRE( vampire->getDamage() == 20 );
 
         werewolf->useAbility(enemy);
 
         REQUIRE( enemy->getHitPoint() == 120 );
         REQUIRE( enemy->getHitPointLimit() == 120 );
-        REQUIRE( enemy->getName() == "Werewolf" );
+        REQUIRE( enemy->getName() == 5 );
         REQUIRE( enemy->getDamage() == 30 );
 
         enemy->useAbility(vampire);
 
         REQUIRE( vampire->getHitPoint() == 150 );
         REQUIRE( vampire->getHitPointLimit() == 150 );
-        REQUIRE( vampire->getName() == "Vampire" );
+        REQUIRE( vampire->getName() == 4 );
         REQUIRE( vampire->getDamage() == 20 );
     }
 
@@ -124,14 +124,14 @@ TEST_CASE( "Test of Werewolf class" ) {
         werewolf->useAbilityTR();
         REQUIRE( werewolf->getHitPoint() == 150 );
         REQUIRE( werewolf->getHitPointLimit() == 150 );
-        REQUIRE( werewolf->getName() == "Wolf" );
+        REQUIRE( werewolf->getName() == 6 );
         REQUIRE( werewolf->getDamage() == 35 );
 
         enemy->useAbilityTR();
 
         REQUIRE( enemy->getHitPoint() == 100 );
         REQUIRE( enemy->getHitPointLimit() == 100 );
-        REQUIRE( enemy->getName() == "Soldier" );
+        REQUIRE( enemy->getName() == 1 );
         REQUIRE( enemy->getDamage() == 10 );
 
     }
@@ -140,7 +140,7 @@ TEST_CASE( "Test of Werewolf class" ) {
 
         REQUIRE( werewolf->getHitPoint() == 150 );
         REQUIRE( werewolf->getHitPointLimit() == 150 );
-        REQUIRE( werewolf->getName() == "Wolf" );
+        REQUIRE( werewolf->getName() == 6 );
         REQUIRE( werewolf->getDamage() == 35 );
 
         int damage = 20;
@@ -148,6 +148,12 @@ TEST_CASE( "Test of Werewolf class" ) {
         werewolf->takeMagDamage(damage);
 
         REQUIRE( werewolf->getHitPoint() == 120);
+
+        werewolf->useAbilityTR();
+        REQUIRE( werewolf->getHitPoint() == 120 );
+        REQUIRE( werewolf->getHitPointLimit() == 150 );
+        REQUIRE( werewolf->getName() == 6 );
+        REQUIRE( werewolf->getDamage() == 35 );
         
     }
     SECTION( "Wolf::takeDemage test" ) {
@@ -155,7 +161,7 @@ TEST_CASE( "Test of Werewolf class" ) {
 
         REQUIRE( werewolf->getHitPoint() == 150 );
         REQUIRE( werewolf->getHitPointLimit() == 150 );
-        REQUIRE( werewolf->getName() == "Wolf" );
+        REQUIRE( werewolf->getName() == 6 );
         REQUIRE( werewolf->getDamage() == 35 );
 
         int damage = 20;

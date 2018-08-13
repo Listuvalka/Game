@@ -1,8 +1,8 @@
-#include "Wizard.h"
+#include "Healer.h"
 
-Wizard::Wizard(): SpellCaster(WIZARD, 100, 5, 100, "SpellCaster") {
+Healer::Healer(): SpellCaster(HEALER, 80, 10, 80, "SpellCaster") {
     addSpell(new Fireball(this), FIREBALL);
     addSpell(new Lightning(this), LIGHTINING);
     addSpell(new Heal(this), HEAL);
 }
-Wizard::~Wizard() {}
+Healer::~Healer() {}

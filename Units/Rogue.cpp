@@ -1,6 +1,6 @@
 #include "Rogue.h"
 
-Rogue::Rogue(): Unit(new State("Rogue", 80, 15), "Unit") {
+Rogue::Rogue(): Unit(ROGUE, new State(80, 15), "Unit") {
 	this->ability = new RogueAbility(this);
 }
 Rogue::~Rogue(){}

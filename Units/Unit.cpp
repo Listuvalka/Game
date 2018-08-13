@@ -1,6 +1,7 @@
 #include "Unit.h"
 
-Unit::Unit(State* state, const char* type): state(state) {
+Unit::Unit(enName name, State* state, const char* type): state(state) {
+    this->name = name;
     this->type = type;
 }
 
@@ -9,17 +10,45 @@ Unit::~Unit() {
     	delete (this->state);
  }
 
+//  void Unit::setObserver(Unit* newObserver) {
+//     if ( observer == NULL ) {
+//         this->observer = newObserver;
+//     } 
+// }
+
+// void Unit::notify(int hp) {
+//     this->observer->ensureIsAlive();
+//     this->observer->notice(hp);
+// }
+
+void Unit::delBook() {
+    this->ability->delBook();
+}
+
 void Unit::ensureIsAlive() {
 	this->state->ensureIsAlive();
+}
+
+void Unit::setName(enName name) {
+    this->name = name;
 }
 void Unit::setState(State* newState) {
 	delete(this->state);
 	this->state = newState;
+    // std::cout << "State initialathed in Unit getDamage() = " << this->state->getDamage() << std::endl;
+    // std::cout << "State initialathed in Unit getHitPoint() = " << this->state->getHitPoint() << std::endl;
 }
 void Unit::setAbility(Ability* newAbility) {
     delete(this->ability);
     this->ability = newAbility;
 }
+
+// void Unit::setObserver(Unit* observer) {
+//     this->state->setObserver(observer);
+// }
+// void Unit::notice(int hp) {
+//     this->state->notice(int hp);
+// }
 
 int Unit::getDamage() const {
 	return this->state->getDamage();
@@ -30,8 +59,8 @@ int Unit::getHitPoint() const {
 int Unit::getHitPointLimit() const {
 	return this->state->getHitPointLimit();
 }
-const char* Unit::getName() const {
-	return this->state->getName();
+enName Unit::getName() const {
+	return this->name;
 }
 
 const char* Unit::getType() const {

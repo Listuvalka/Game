@@ -3,10 +3,10 @@
 
 TEST_CASE( "Test of Unit class" ) {
     int hp = 100;
-    Unit* unit = new Unit("Union", hp, 10);
+    Unit* unit = new Unit(Union, new State(hp, 10), "Unit");
     REQUIRE( unit->getHitPoint() == hp );
     REQUIRE( unit->getHitPointLimit() == hp );
-    REQUIRE( unit->getName() == "Union" );
+    REQUIRE( unit->getName() == 0 );
     REQUIRE( unit->getDamage() == 10 );
     
     SECTION( "UNIT::takeDemage test" ) {

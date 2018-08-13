@@ -1,7 +1,7 @@
 all: test.out
 
-test.out: test_main.o State.o Ability.o Unit.o DefAbility.o Soldier.o Rogue.o RogueAbility.o MagState.o Berserker.o BerserkerState.o VampireAbility.o Vampire.o WerewolfAbility.o WolfState.o Werewolf.o Spell.o Hit.o Fireball.o Heal.o SpellCaster.o Wizard.o Group.o Lightning.o TWizard.o
-	g++ -o test.out test_main.o State.o Ability.o Unit.o DefAbility.o Soldier.o Rogue.o RogueAbility.o MagState.o Berserker.o BerserkerState.o VampireAbility.o Vampire.o WerewolfAbility.o WolfState.o Werewolf.o Spell.o Hit.o Fireball.o Heal.o SpellCaster.o Wizard.o Group.o Lightning.o TWizard.o 
+test.out: test_main.o State.o Ability.o Unit.o DefAbility.o Soldier.o Rogue.o RogueAbility.o MagState.o Berserker.o BerserkerState.o VampireAbility.o Vampire.o WerewolfAbility.o WolfState.o Werewolf.o Spell.o Hit.o Fireball.o Heal.o SpellCaster.o Wizard.o Group.o Lightning.o Healer.o PriestAbility.o Priest.o Demon.o Warlock.o TWarlock.o
+	g++ -o test.out test_main.o State.o Ability.o Unit.o DefAbility.o Soldier.o Rogue.o RogueAbility.o MagState.o Berserker.o BerserkerState.o VampireAbility.o Vampire.o WerewolfAbility.o WolfState.o Werewolf.o Spell.o Hit.o Fireball.o Heal.o SpellCaster.o Wizard.o Group.o Lightning.o Healer.o PriestAbility.o Priest.o Demon.o Warlock.o TWarlock.o
 
 test_main.o: 
 	g++ -std=c++11 -c test_main.cpp
@@ -51,14 +51,9 @@ WolfState.o:
 Werewolf.o:
 	g++ -std=c++11 -c ../Units/Werewolf.cpp
 
-# SpellBook.o:
-# 	g++ -std=c++11 -c ../Spell/SpellBook.cpp
 
 SpellCaster.o:
 	g++ -std=c++11 -c ../Units/SpellCaster.cpp
-
-# WizardSpellBook.o:
-# 	g++ -std=c++11 -c ../Spell/WizardSpellBook.cpp
 
 Wizard.o:
 	g++ -std=c++11 -c ../Units/Wizard.cpp	
@@ -81,8 +76,33 @@ Fireball.o:
 Heal.o:
 	g++ -std=c++11 -c ../Spell/Heal.cpp
 
-TWizard.o:
-	g++ -std=c++11 -c TWizard.cpp
+Healer.o:
+	g++ -std=c++11 -c ../Units/Healer.cpp
+
+PriestAbility.o:
+	g++ -std=c++11 -c ../Ability/PriestAbility.cpp
+
+Priest.o:
+	g++ -std=c++11 -c ../Units/Priest.cpp
+
+Demon.o:
+	g++ -std=c++11 -c ../Units/Demon.cpp
+
+Warlock.o:
+	g++ -std=c++11 -c ../Units/Warlock.cpp
+
+# IObserveble.o:
+# 	g++ -std=c++11 -c ../State/IObserveble.cpp
+
+# IObserver.o:
+# 	g++ -std=c++11 -c ../State/IObserver.cpp
+
+# Necromancer.o:
+# 	g++ -std=c++11 -c ../Units/Necromancer.cpp
+
+TWarlock.o:
+	g++ -std=c++11 -c TWarlock.cpp
+
 
 
 

@@ -2,7 +2,7 @@
 
 
 Werewolf::Werewolf():
-    Unit(new State("Werewolf", 120, 30), "Unit") {
+    Unit(WEREWOLF, new State(120, 30), "Unit") {
 	this->ability = new WerewolfAbility(this);
 }
 	Werewolf::~Werewolf() {}

@@ -3,10 +3,10 @@
 
 TEST_CASE( "Test of Soldier class" ) {
     int hp = 100;
-    Soldier* soldier = new Soldier("Soldier", hp, 10);
+    Soldier* soldier = new Soldier();
     REQUIRE( soldier->getHitPoint() == hp );
     REQUIRE( soldier->getHitPointLimit() == hp );
-    REQUIRE( soldier->getName() == "Soldier" );
+    REQUIRE( soldier->getName() == 1 );
     REQUIRE( soldier->getDamage() == 10 );
     
     SECTION( "Soldier::takeDemage test" ) {

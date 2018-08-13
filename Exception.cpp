@@ -11,5 +11,11 @@ class SuchKeyAlreadyExist {};
 
 class NoSuchKey {};
 
+class UnitHaveNotMagState {};
+
+class DemonRunOut {};
+
+class NoSpellInBook {};
+
 
 #endif // EXCEPTION_H

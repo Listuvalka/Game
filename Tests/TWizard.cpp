@@ -16,8 +16,6 @@ TEST_CASE( "Test of Wizard class" ) {
     REQUIRE( wizard->getMana() == 100 );   
     REQUIRE( wizard->getManaLim() == 100 );
 
-    // wizard->chooseSpell();
-
     SECTION( "Wizard::takeDemage test" ) {
         int damage = 10;
         int iteration = wizard->getHitPoint()/damage;
@@ -67,29 +65,39 @@ TEST_CASE( "Test of Wizard class" ) {
         REQUIRE( wizard->getHitPoint() == wizard->getHitPointLimit() - 20 );
 
         wizard->cast(wizard, HEAL);
-        REQUIRE( wizard->getHitPoint() == wizard->getHitPointLimit());
+        REQUIRE( wizard->getHitPoint() == 95 );
         
         wizard->takeDamage(40);
-        REQUIRE( wizard->getHitPoint() == wizard->getHitPointLimit() - 40 );
+        REQUIRE( wizard->getHitPoint() == 55 );
 
         wizard->cast(wizard, HEAL);
-        REQUIRE( wizard->getHitPoint() == 90 );
+        REQUIRE( wizard->getHitPoint() == 70 );
     }
     SECTION( "Wizard::cast test") {
 
         Soldier* soldier = new Soldier();
-        Werewolf* werewolf = new Werewolf();
-        Vampire* vampire = new Vampire();
-
+        
         REQUIRE( soldier->getHitPoint() == 100 );
         REQUIRE( soldier->getHitPointLimit() == 100 );
         REQUIRE( soldier->getName() == "Soldier" );
         REQUIRE( soldier->getDamage() == 10 );
 
-        REQUIRE( werewolf->getHitPoint() == 120 );
-        REQUIRE( werewolf->getHitPointLimit() == 120 );
-        REQUIRE( werewolf->getName() == "Werewolf" );
-        REQUIRE( werewolf->getDamage() == 30 );
+
+
+        wizard->chooseSpell();
+        wizard->cast(soldier, FIREBALL);
+        REQUIRE( soldier->getHitPoint() == 85 );
+        REQUIRE( soldier->getHitPointLimit() == 100 );
+        REQUIRE( wizard->getMana() == 90 );
+
+        wizard->cast(soldier, LIGHTINING);
+        REQUIRE( soldier->getHitPoint() == 75 );
+        REQUIRE( soldier->getHitPointLimit() == 100 );
+        REQUIRE( wizard->getMana() == 85 );
+    }   
+    SECTION( "Fight between Wizard and Vampire") {
+
+        Vampire* vampire = new Vampire();
 
         REQUIRE( vampire->getHitPoint() == 150 );
         REQUIRE( vampire->getHitPointLimit() == 150 );
@@ -97,42 +105,63 @@ TEST_CASE( "Test of Wizard class" ) {
         REQUIRE( vampire->getDamage() == 20 );
 
 
+        wizard->cast(vampire, LIGHTINING);
+        REQUIRE( vampire->getHitPoint() == 140 );
+        REQUIRE( vampire->getHitPointLimit() == 150 );
+        REQUIRE( wizard->getHitPoint() == 100 );
+        REQUIRE( wizard->getMana() == 95 );
 
-        // wizard->chooseSpell();
-        wizard->cast(soldier, FIREBALL);
-        REQUIRE( soldier->getHitPoint() == 93 );
-        REQUIRE( soldier->getHitPointLimit() == 100 );
-        REQUIRE( wizard->getMana() == 90 );
-
-        wizard->cast(soldier, LIGHTINING);
-        REQUIRE( soldier->getHitPoint() == 88 );
-        REQUIRE( soldier->getHitPointLimit() == 100 );
-        REQUIRE( wizard->getMana() == 85 );
+        wizard->attack(vampire);
+        REQUIRE( vampire->getHitPoint() == 145 );
+        REQUIRE( vampire->getHitPointLimit() == 150 );
+        REQUIRE( wizard->getHitPoint() == 90 );
+        REQUIRE( wizard->getMana() == 95 );
         
         vampire->useAbility(wizard);
         REQUIRE( wizard->getHitPoint() == 150 );
         REQUIRE( wizard->getHitPointLimit() == 150 );
         REQUIRE( wizard->getName() == "Vampire" );
         REQUIRE( wizard->getDamage() == 20 );
-        REQUIRE( wizard->getMana() == 85 );
+        
+        try {
+            wizard->getMana();
+        } catch ( UnitHaveNotMagState obj ) {}
+        
+        try {
+            wizard->chooseSpell();
+        } catch ( UnitHaveNotMagState obj ) {}
+    }
+    SECTION( "Fight between Wizard and Werewolf") {
+        Werewolf* werewolf = new Werewolf();
+
+        REQUIRE( werewolf->getHitPoint() == 120 );
+        REQUIRE( werewolf->getHitPointLimit() == 120 );
+        REQUIRE( werewolf->getName() == "Werewolf" );
+        REQUIRE( werewolf->getDamage() == 30 );
+
         wizard->chooseSpell();
+        wizard->cast(werewolf, FIREBALL);
+        REQUIRE( werewolf->getHitPoint() == 105 );
+        REQUIRE( werewolf->getHitPointLimit() == 120 );
+        REQUIRE( wizard->getHitPoint() == 100 );
+        REQUIRE( wizard->getMana() == 90 );
+
+        
+        werewolf->useAbility(wizard);
+        REQUIRE( wizard->getHitPoint() == 120 );
+        REQUIRE( wizard->getHitPointLimit() == 120 );
+        REQUIRE( wizard->getName() == "Werewolf" );
+        REQUIRE( wizard->getDamage() == 30 );
+        
+        try {
+            wizard->getMana();
+        } catch ( UnitHaveNotMagState obj ) {}
+        
+        try {
+            wizard->chooseSpell();
+        } catch ( UnitHaveNotMagState obj ) {}
+
 
     }
-    // SECTION( "SpellCaster::add Spell test") {
-
-    //     Soldier* soldier = new Soldier();
-    //     Spell *lightning = new Lightning(wizard);
-        
-    //     REQUIRE( lightning->getSpellName() == "Lightning" );
-    //     REQUIRE( lightning->getActionPoint() == 10 );
-    //     REQUIRE( lightning->getCost() == 5 );
-
-    //     wizard->addSpell(lightning, LIGHTINING);
-
-    //     wizard->chooseSpell();
-
-    //     wizard->cast(soldier, LIGHTINING);
-    //     REQUIRE( soldier->getHitPoint() == 95 );
-    // }
 
 }

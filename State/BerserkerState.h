@@ -7,7 +7,7 @@
 
 class BerserkerState: public State {
 public:
-	BerserkerState(const char* name, int hitPoint, int damage);
+	BerserkerState(int hitPoint, int damage);
 	virtual ~BerserkerState();
 
     void takeMagDamage(int dmg);

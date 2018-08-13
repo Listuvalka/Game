@@ -7,6 +7,7 @@ TEST_CASE( "Test of Fireball spell class" ) {
 
     REQUIRE( fireball->getActionPoint() == 15 );
     REQUIRE( fireball->getCost() == 10 );
+    REQUIRE( fireball->getSpellName() == 1 );
   
     SECTION( "Fireball::action test" ) {
         Soldier* soldier = new Soldier();
