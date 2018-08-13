@@ -6,6 +6,7 @@
 
 
 
+
 class Hit: public Spell {
 
 public:

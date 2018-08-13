@@ -4,12 +4,26 @@ Hit::Hit(SpellCaster* owner, enSp spellName, int actionPoint, int cost): Spell(o
 Hit::~Hit() {}
 
 void Hit::action(Unit *target) {
-    std::string wizard = "Wizard";
-    std::string healer = "Healer";
-    
-    if ( this->owner->getName() != wizard && this->owner->getName() != healer ) {
+   
+    if ( this->owner->getName() == 7 ) {
+        
+        // std::cout << " owner->getName() " << owner->getName() << std::endl;
+        
         target->takeMagDamage(this->getActionPoint());
-    } else {
+    } 
+    else if ( this->owner->getName() == 9 ) {
+
+        // std::cout << " owner->getName() " << owner->getName() << std::endl;
+        
+        if ( target->getName() == 4 || target->getName() == 11 ) {
+
+            // std::cout << " target->getName() " << target->getName() << std::endl;
+
+            target->takeMagDamage(this->getActionPoint() * 2);
+        }
+    else {
         target->takeMagDamage(this->getActionPoint()/2);
+    }
+    
     }
 }

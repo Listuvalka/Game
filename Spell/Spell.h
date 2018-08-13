@@ -6,6 +6,7 @@
 #include "../Units/SpellCaster.h"
 #include "../Group.cpp"
 
+
 class SpellCaster;
 
 class Spell {
