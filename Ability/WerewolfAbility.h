@@ -16,8 +16,9 @@ public:
     
     virtual void attack(Unit* enemy);
 
-    virtual void useAbility(Unit* owner);
     virtual void useAbilityTR();
+    virtual void useAbility(Unit* owner);
+
 };
 
 #endif // WEREWOLF_ABILITY_H

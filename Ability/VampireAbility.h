@@ -9,9 +9,9 @@
 #include "../Exception.cpp"
 
 
+
 class VampireAbility: public Ability {
-// private:
-//     void infect(Unit* target);
+
 
 public:
 	VampireAbility(Unit* owner);

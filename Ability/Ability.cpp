@@ -4,6 +4,9 @@ Ability::Ability(Unit* owner): owner(owner) {}
 
 Ability::~Ability() {}
 
+void Ability::delBook() {
+    return;
+}
 void Ability::attack(Unit* enemy) {
     this->owner->ensureIsAlive();
     enemy->takeDamage(this->owner->getDamage());
